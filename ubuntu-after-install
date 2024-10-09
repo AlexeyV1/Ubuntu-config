@@ -1,0 +1,5 @@
+echo "NASTROIKA NTP"
+grep -qxF 'NTP=0.ru.poll.ntp.org' /etc/systemd/timesyncd.conf || sudo sed -i '/\[Time\]/a NTP=0.ru.poll.ntp.org' /etc/systemd/timesyncd.conf
+timedatectl set-timezone Europe/Moscow
+timedatectl set-ntp true
+systemctl restart systemd-timesyncd 
